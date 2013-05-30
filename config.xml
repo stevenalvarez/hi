@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns	= "http://www.w3.org/ns/widgets"
+	xmlns:gap	= "http://phonegap.com/ns/1.0"
+	id		    = "sysdecom.com"
+    versionCode = "1"
+	version 	= "1.0.0">
+
+	<name>Hi</name>
+
+	<description>
+		Hola mundo!!!
+	</description>
+
+	<author href="http://sysdecom.com"
+		email="steven.alvarez.v@gmail.com">
+		SYSDECOM
+	</author>
+    
+    <preference name="webviewbounce" value="false" />
+
+    <access origin="*" />
+    
+</widget>

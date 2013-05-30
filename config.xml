@@ -24,8 +24,6 @@
     <preference name="phonegap-version" value="2.7.0" /> <!-- all: current version of PhoneGap -->
     <preference name="prerendered-icon" value="true" /> <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
     <preference name="ios-statusbarstyle" value="black-opaque" /> <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
-
-    <access origin="*" />
     
     <icon src="icono.png" />
     <icon src="icono.png" gap:platform="android" width="47" height="47" />
@@ -34,6 +32,8 @@
     <icon src="icons/ios/icon_at_2x.png" gap:platform="ios" width="114" height="114" />
     
     <!-- retina iPad support: PhoneGap 2.5.0+ only -->
-    <icon src="icons/ios/icon-72_at_2x.png" gap:platform="ios" width="144" height="144" />    
+    <icon src="icons/ios/icon-72_at_2x.png" gap:platform="ios" width="144" height="144" />
+    
+    <access origin="*" />
     
 </widget>

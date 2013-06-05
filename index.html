@@ -28,7 +28,7 @@
         
             Hola mundo!!!!
             <br />
-            <a class="facebook" href="https://www.facebook.com/restaurante.lasterrazasdebecerril" target="_blank" data-icon="back" rel="external">Enlace</a>
+            <a class="facebook" href="https://www.facebook.com/restaurante.lasterrazasdebecerril" target="_blank" rel="external">Enlace</a>
             
     	</div><!-- /content -->
     
@@ -39,4 +39,15 @@
      </div><!-- /page -->
     
     </body>
+    
+    <script>
+    $(document).ready(function(){
+        
+    	$('a[rel="external"]')
+    	.click( function() {
+    	window.open( $(this).attr('href') );
+    	return false;
+    	});
+    });    
+    </script>
 </html>

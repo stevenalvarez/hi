@@ -31,7 +31,7 @@
     <icon src="icono.png" />
     <icon src="icono.png" gap:platform="android" width="47" height="47" />
     
-    <icon src="icons/ios/iTunesArtwork.png" gap:platform="ios" width="512" height="512" />
+    <icon src="icons/ios/ITunesArtwork.png" gap:platform="ios" width="512" height="512" />
     <icon src="icons/ios/Icon.png" gap:platform="ios" width="57" height="57" />
     <icon src="icons/ios/Icon@2x.png" gap:platform="ios" width="114" height="114" />
     <icon src="icons/ios/Icon-72.png" gap:platform="ios" width="72" height="72" />

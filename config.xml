@@ -27,6 +27,7 @@
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="splash-screen-duration" value="10000" />
+    <preference name="stay-in-webview" value="false" />
     
     <icon src="icono.png" />
     <icon src="icono.png" gap:platform="android" width="47" height="47" />
@@ -51,6 +52,6 @@
     <gap:splash src="splash/ios/Default-Landscape_at_2x.png" gap:platform="ios" width="2048" height="1496" />
     <gap:splash src="splash/ios/Default-Portrait_at_2x.png" gap:platform="ios" width="1536" height="2008" />    
     
-    <access origin="*" />
+    <access origin="*" browserOnly="true" subdomains="true"/>
     
 </widget>

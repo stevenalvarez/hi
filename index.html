@@ -16,6 +16,14 @@
         <script src="js/main.js"></script>
         
     </head>
+    
+    <style>
+        p > a{
+            display: block;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+    </style>
     <body>
     
     <div data-role="page" id="hola_mundo" data-theme="b">
@@ -28,15 +36,11 @@
         
             Hola mundo!!!!
             <br />
-            <a class="facebook" href="https://www.facebook.com/restaurante.lasterrazasdebecerril" target="_blank" rel="external">Enlace</a>
-            <p><a style="font-size: 20px;" href="#" onclick="window.open('http://www.nhl.com', '_blank', 'location=yes');">_blank</a></p>
-            <p><a style="font-size: 20px;" href="#" onclick="window.open('http://www.nhl.com', '_system', 'location=yes');">_system</a></p>
-            <p><a href="#" onclick="window.open('http://www.nhl.com', '_self', 'location=yes');">_self</a></p>
-            
-            
-            <a style="font-size: 20px;" href="http://moorberry.net" data-rel="external">Like this</a>
-            
-            <a style="font-size: 20px;" href="http://www.google.com/" onclick="window.open(this.href,'_system'); return false;">Google</a>
+            <p><a class="facebook" href="https://www.facebook.com/restaurante.lasterrazasdebecerril" target="_blank" rel="external">Enlace</a></p>
+            <p><a href="#" onclick="window.open('http://www.nhl.com', '_blank', 'location=yes');">_blank</a></p>
+            <p><a href="#" onclick="window.open('http://www.nhl.com', '_system', 'location=yes');">_system</a></p>
+            <p><a href="http://moorberry.net" data-rel="external">Like this</a></p>
+            <p><a href="http://www.google.com/" onclick="window.open(this.href,'_system'); return false;">Google</a></p>
             
     	</div><!-- /content -->
     
@@ -48,14 +52,4 @@
     
     </body>
     
-    <script>
-    $(document).ready(function(){
-        
-    	$('a[rel="external"]')
-    	.click( function() {
-    	window.open( $(this).attr('href') );
-    	return false;
-    	});
-    });    
-    </script>
 </html>

@@ -52,6 +52,10 @@
     <gap:splash src="splash/ios/Default-Landscape_at_2x.png" gap:platform="ios" width="2048" height="1496" />
     <gap:splash src="splash/ios/Default-Portrait_at_2x.png" gap:platform="ios" width="1536" height="2008" />    
     
+    <plugin name="InAppBrowser" value="CDVInAppBrowser" />
+    <plugin name="InAppBrowser" />
+    <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+
     <access origin="*" browserOnly="true"/>
     
 </widget>

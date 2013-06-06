@@ -22,6 +22,7 @@
             display: block;
             font-size: 50px;
             margin-bottom: 20px;
+            cursor: pointer;
         }
     </style>
     <body>
@@ -41,6 +42,7 @@
             <p><a href="#" onclick="window.open('http://www.nhl.com', '_system', 'location=yes');">_system</a></p>
             <p><a href="http://moorberry.net" data-rel="external">Like this</a></p>
             <p><a href="http://www.google.com/" onclick="window.open(this.href,'_system'); return false;">Google</a></p>
+            <p><a href="http://www.google.com/" target="_blank">MY Google</a></p>
             
     	</div><!-- /content -->
     
@@ -51,5 +53,18 @@
      </div><!-- /page -->
     
     </body>
+    
+    <script type="text/javascript">
+        $("a").bind("click", function()
+        {
+            if (this.href)
+            {
+                // Ensure that loading a new page doesn't open
+                // a new window
+                location.href = this.href;
+                return false;
+            }
+        });
+    </script>
     
 </html>

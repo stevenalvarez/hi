@@ -37,12 +37,13 @@
         
             Hola mundo!!!!
             <br />
-            <p><a href="https://www.facebook.com/restaurante.lasterrazasdebecerril" target="_blank" rel="external" data-ajax="false">Enlace</a></p>
+            <!--<p><a href="https://www.facebook.com/restaurante.lasterrazasdebecerril" target="_blank" rel="external" data-ajax="false">Enlace</a></p>
             <p><a href="#" onclick="window.open('http://www.nhl.com', '_blank', 'location=yes');">_blank</a></p>
             <p><a href="#" onclick="window.open('http://www.nhl.com', '_system', 'location=yes');">_system</a></p>
             <p><a href="http://moorberry.net" data-rel="external">Like this</a></p>
             <p><a href="http://www.google.com/" onclick="window.open(this.href,'_system'); return false;">Google</a></p>
-            <p><a href="http://www.google.com/" target="_blank" rel="external">MY Google</a></p>
+            <p><a href="http://www.google.com/" target="_blank" rel="external">MY Google</a></p>-->
+            <p><a href="http://www.google.com.bo/" data-rel="dialog">Open dialog</a> </p>
             
     	</div><!-- /content -->
     
@@ -55,7 +56,7 @@
     </body>
     
     <script type="text/javascript">
-        $( "a" ).live( "click", function(event) {
+        $( "a.link" ).live( "click", function(event) {
             var $this = $(this),
                 //get href, remove same-domain protocol and host
                 href = $this.attr( "href" ).replace( location.protocol + "//" + location.host, ""),

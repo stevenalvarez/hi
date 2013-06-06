@@ -42,7 +42,7 @@
             <p><a href="#" onclick="window.open('http://www.nhl.com', '_system', 'location=yes');">_system</a></p>
             <p><a href="http://moorberry.net" data-rel="external">Like this</a></p>
             <p><a href="http://www.google.com/" onclick="window.open(this.href,'_system'); return false;">Google</a></p>
-            <p><a href="http://www.google.com/" target="_blank">MY Google</a></p>
+            <p><a href="http://www.google.com/" target="_blank" rel="external">MY Google</a></p>
             
     	</div><!-- /content -->
     
@@ -55,15 +55,60 @@
     </body>
     
     <script type="text/javascript">
-        $("a").bind("click", function()
-        {
-            if (this.href)
-            {
-                // Ensure that loading a new page doesn't open
-                // a new window
-                location.href = this.href;
+        $( "a" ).live( "click", function(event) {
+            var $this = $(this),
+                //get href, remove same-domain protocol and host
+                href = $this.attr( "href" ).replace( location.protocol + "//" + location.host, ""),
+                //if target attr is specified, it's external, and we mimic _blank... for now
+                target = $this.is( "[target]" ),
+                //if it still starts with a protocol, it's external, or could be :mailto, etc
+                external = target || /^(:?\w+:)/.test( href ) || $this.is( "[rel=external]" ),
+                target = $this.is( "[target]" );
+        
+            if( href === '#' ){
+                //for links created purely for interaction - ignore
                 return false;
             }
+        
+            var testtarget = $this.attr( "target" );
+            if (testtarget == '_blank') {
+                alert('Leaving web app');
+                return true;
+            }
+        
+            $activeClickedLink = $this.closest( ".ui-btn" ).addClass( $.mobile.activeBtnClass );
+        
+            if( external || !$.mobile.ajaxLinksEnabled ){
+                //remove active link class if external
+                removeActiveLinkClass(true);
+        
+                //deliberately redirect, in case click was triggered
+                if( target ){
+                    window.open(href);
+                    //return true;
+                }
+                else{
+                    location.href = href;
+                }
+            }
+            else {  
+                //use ajax
+                var transition = $this.data( "transition" ),
+                    back = $this.data( "back" ),
+                    changeHashOnSuccess = !$this.is( "[data-rel="+ $.mobile.nonHistorySelectors +"]" );
+        
+                nextPageRole = $this.attr( "data-rel" );    
+        
+                //if it's a relative href, prefix href with base url
+                if( href.indexOf('/') && href.indexOf('#') !== 0 ){
+                    href = getBaseURL() + href;
+                }
+        
+                href.replace(/^#/,'');
+        
+                changePage(href, transition, back, changeHashOnSuccess);            
+            }
+            event.preventDefault();
         });
     </script>
     

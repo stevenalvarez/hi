@@ -5,10 +5,10 @@
     versionCode = "1"
 	version 	= "1.0.0">
 
-	<name>Hi</name>
+	<name>HelloWord</name>
 
 	<description>
-		Hola mundo!!!
+		Aplicacion Hello Word
 	</description>
 
 	<author href="http://sysdecom.com"

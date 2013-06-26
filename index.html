@@ -16,126 +16,101 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script src="js/main.js"></script>
         <script type="text/javascript">
-        // Wait for Cordova to load
-        //
-        document.addEventListener("deviceready", onDeviceReady, false);
+        var pictureSource;   // picture source
+        var destinationType; // sets the format of returned value 
     
-        // Cordova is ready
+        // Wait for Cordova to connect with the device
+        //
+        document.addEventListener("deviceready",onDeviceReady,false);
+    
+        // Cordova is ready to be used!
         //
         function onDeviceReady() {
-             var ref = window.open('http://apache.org', '_blank', 'location=yes');
-             ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
-             ref.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
-             ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-             ref.addEventListener('exit', function(event) { alert(event.type); });
+            pictureSource=navigator.camera.PictureSourceType;
+            destinationType=navigator.camera.DestinationType;
         }
-        
-        function getImage() {
-
-            // Retrieve image file location from specified source
-            navigator.camera.getPicture(uploadPhoto, function(message) {
-					alert('get picture failed');
-				},{
-					quality: 50, 
-		            destinationType: navigator.camera.DestinationType.FILE_URI,
-		            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-				}
-            );
-
+    
+        // Called when a photo is successfully retrieved
+        //
+        function onPhotoDataSuccess(imageData) {
+          // Uncomment to view the base64 encoded image data
+          // console.log(imageData);
+    
+          // Get image handle
+          //
+          var smallImage = document.getElementById('smallImage');
+    
+          // Unhide image elements
+          //
+          smallImage.style.display = 'block';
+    
+          // Show the captured photo
+          // The inline CSS rules are used to resize the image
+          //
+          smallImage.src = "data:image/jpeg;base64," + imageData;
         }
-        
-        function uploadPhoto(imageURI) {
-            console.log(imageURI);
-            alert("got image file entry: " + imageURI.fullScreen);
-            alert("got image file entry: " + imageURI.fullPath);
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
-
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
-
-            options.params = params;
-            options.chunkedMode = false;
-
-            var ft = new FileTransfer();
-            ft.upload(imageURI, "http://yourdomain.com/upload.php", win, fail, options);
+    
+        // Called when a photo is successfully retrieved
+        //
+        function onPhotoURISuccess(imageURI) {
+          // Uncomment to view the image file URI 
+          // console.log(imageURI);
+    
+          // Get image handle
+          //
+          var largeImage = document.getElementById('largeImage');
+    
+          // Unhide image elements
+          //
+          largeImage.style.display = 'block';
+    
+          // Show the captured photo
+          // The inline CSS rules are used to resize the image
+          //
+          largeImage.src = imageURI;
         }
-
-        function win(r) {
-            console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);
-            alert(r.response);
+    
+        // A button will call this function
+        //
+        function capturePhoto() {
+          // Take picture using device camera and retrieve image as base64-encoded string
+          navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+            destinationType: destinationType.DATA_URL });
         }
-
-        function fail(error) {
-            alert("An error has occurred: Code = " = error.code);
+    
+        // A button will call this function
+        //
+        function capturePhotoEdit() {
+          // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
+          navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+            destinationType: destinationType.DATA_URL });
         }
-        
-        function dump_pic(data) {
-            var viewport = document.getElementById('viewport');
-            console.log(data);
-            viewport.style.display = "";
-            viewport.style.position = "absolute";
-            viewport.style.top = "10px";
-            viewport.style.left = "10px";
-            document.getElementById("test_img").src = data;
+    
+        // A button will call this function
+        //
+        function getPhoto(source) {
+          // Retrieve image file location from specified source
+          navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
+            destinationType: destinationType.FILE_URI,
+            sourceType: source });
         }
-        
-        function failx(msg) {
-            alert(msg);
+    
+        // Called if something bad happens.
+        // 
+        function onFail(message) {
+          alert('Failed because: ' + message);
         }
-        
-        function show_pic() {
-            navigator.camera.getPicture(dump_pic, failx, {
-                quality : 50
-            });
-        }                
+    
         </script>
-        
-    </head>
-    
-    <style>
-        p > a{
-            display: block;
-            font-size: 50px;
-            margin-bottom: 20px;
-            cursor: pointer;
-        }
-    </style>
-    <body>
-    
-    <div data-role="page" id="hola_mundo" data-theme="b">
-        
-    	<div data-role="header" data-tap-toggle="false" data-theme="a" data-position ="fixed">
-            Header
-    	</div><!-- /footer -->        
-        
-    	<div data-role="content">
-        
-            Hola mundo!!!!
-            <br />
-            <p><a href="#" onclick="window.open('https://www.facebook.com/restaurante.lasterrazasdebecerril', '_blank', 'location=yes');">_blank</a></p>
-            <p><a href="#" onclick="window.open('https://www.facebook.com/restaurante.lasterrazasdebecerril', '_system', 'location=yes');">_system</a></p>
-            <p><a href="http://www.google.com/" onclick="window.open(this.href,'_system'); return false;">Google</a></p>
-            <br />
-            <p><button onclick="getImage();">Upload a Photo</button></p>
-            <p><button onclick="show_pic();">Show Pic</button></p>
-            <div class="content_image" style="min-height: 100px; border: 1px solid red;">
-                <img id="test_img" src="" />
-            </div>
-            
-    	</div><!-- /content -->
-    
-    	<div data-role="footer" data-tap-toggle="false" data-theme="a" data-position ="fixed">
-            Footer
-    	</div><!-- /footer -->
-        
-     </div><!-- /page -->
-    
-    </body>
+      </head>
+      <body>
+        <button onclick="capturePhoto();">Capture Photo</button> <br>
+        <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+        <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+        <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+        <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+        <img style="display:none;" id="largeImage" src="" />
+      </body>
+
     
 </html>

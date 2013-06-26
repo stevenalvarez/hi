@@ -29,6 +29,48 @@
              ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
              ref.addEventListener('exit', function(event) { alert(event.type); });
         }
+        
+        function getImage() {
+
+            // Retrieve image file location from specified source
+            navigator.camera.getPicture(uploadPhoto, function(message) {
+					alert('get picture failed');
+				},{
+					quality: 50, 
+		            destinationType: navigator.camera.DestinationType.FILE_URI,
+		            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+				}
+            );
+
+        }
+        
+        function uploadPhoto(imageURI) {
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+            options.chunkedMode = false;
+
+            var ft = new FileTransfer();
+            ft.upload(imageURI, "http://yourdomain.com/upload.php", win, fail, options);
+        }
+
+        function win(r) {
+            console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+            alert(r.response);
+        }
+
+        function fail(error) {
+            alert("An error has occurred: Code = " = error.code);
+        }        
         </script>
         
     </head>
@@ -56,6 +98,8 @@
             <p><a href="#" onclick="window.open('https://www.facebook.com/restaurante.lasterrazasdebecerril', '_blank', 'location=yes');">_blank</a></p>
             <p><a href="#" onclick="window.open('https://www.facebook.com/restaurante.lasterrazasdebecerril', '_system', 'location=yes');">_system</a></p>
             <p><a href="http://www.google.com/" onclick="window.open(this.href,'_system'); return false;">Google</a></p>
+            <br />
+            <p><button onclick="getImage();">Upload a Photo</button></p>
             
     	</div><!-- /content -->
     

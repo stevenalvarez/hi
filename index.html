@@ -73,7 +73,27 @@
 
         function fail(error) {
             alert("An error has occurred: Code = " = error.code);
-        }        
+        }
+        
+        function dump_pic(data) {
+            var viewport = document.getElementById('viewport');
+            console.log(data);
+            viewport.style.display = "";
+            viewport.style.position = "absolute";
+            viewport.style.top = "10px";
+            viewport.style.left = "10px";
+            document.getElementById("test_img").src = data;
+        }
+        
+        function failx(msg) {
+            alert(msg);
+        }
+        
+        function show_pic() {
+            navigator.camera.getPicture(dump_pic, failx, {
+                quality : 50
+            });
+        }                
         </script>
         
     </head>
@@ -103,6 +123,10 @@
             <p><a href="http://www.google.com/" onclick="window.open(this.href,'_system'); return false;">Google</a></p>
             <br />
             <p><button onclick="getImage();">Upload a Photo</button></p>
+            <p><button onclick="show_pic();">Show Pic</button></p>
+            <div class="content_image" style="min-height: 100px; border: 1px solid red;">
+                <img id="test_img" src="" />
+            </div>
             
     	</div><!-- /content -->
     

@@ -46,7 +46,8 @@
         
         function uploadPhoto(imageURI) {
             console.log(imageURI);
-            alert("got image file entry: " + fileEntry.fullPath);
+            alert("got image file entry: " + imageURI.fullScreen);
+            alert("got image file entry: " + imageURI.fullPath);
             var options = new FileUploadOptions();
             options.fileKey="file";
             options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);

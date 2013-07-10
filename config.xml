@@ -50,7 +50,13 @@
     
     <!-- retina iPad support: PhoneGap 2.5.0+ only -->
     <gap:splash src="splash/ios/Default-Landscape_at_2x.png" gap:platform="ios" width="2048" height="1496" />
-    <gap:splash src="splash/ios/Default-Portrait_at_2x.png" gap:platform="ios" width="1536" height="2008" />    
+    <gap:splash src="splash/ios/Default-Portrait_at_2x.png" gap:platform="ios" width="1536" height="2008" />
+    
+    <!-- setting facebook -->
+    <gap:plugin name="FacebookConnect">
+        <param name="APP_ID" value="582928678420559" />
+        <param name="APP_NAME" value="oppopodpodpod" />
+    </gap:plugin>
     
     <plugin name="InAppBrowser" value="CDVInAppBrowser" />
     <plugin name="InAppBrowser" />

@@ -17,6 +17,16 @@
         <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
         <script type="text/javascript" src="facebook_js_sdk.js"></script>
         <script src="js/main.js"></script>
+        <script>
+                // Load the SDK Asynchronously
+                (function(d){
+                 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                 if (d.getElementById(id)) {return;}
+                 js = d.createElement('script'); js.id = id; js.async = true;
+                 js.src = "//connect.facebook.net/en_US/all.js";
+                 ref.parentNode.insertBefore(js, ref);
+                }(document));        
+        </script>
         <script type="text/javascript">
         var pictureSource;   // picture source
         var destinationType; // sets the format of returned value 

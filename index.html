@@ -31,7 +31,7 @@
             pictureSource=navigator.camera.PictureSourceType;
             destinationType=navigator.camera.DestinationType;
 			try {
-				alert('Devicedd is ready!	Make sure you set your app_id below this alert.');
+				alert('Device is ready!	Make sure you set your app_id below this alert.');
 				FB.init({
 					appId : "582928678420559",
 					nativeInterface : CDV.FB,
@@ -83,6 +83,37 @@
 				scope : "email"
 			});
 		}
+        
+        function getLoginStatus() {    
+        FB.getLoginStatus(function(session) {
+            console.log('Got the user\'s session(facebook): ', session);
+        
+            if (session.status == 'connected') {
+                FB.api('/me', {
+                    fields: 'id, name, email'
+                },
+                function(response) {
+                    if (response.error) { 
+                       console.log('get user name failed');
+                       login(); // login to Facebook.
+                    }
+                    else
+                    {                   
+                       console.log('FB name, ' + response.name);
+                       console.log('FB id, ' + response.id);
+                       console.log('FB email, ' + response.email);
+        
+                       siteLogin(response); // login to my site.                   
+                    }
+                });
+            } else {
+                console.log('get user name failed 2');
+        
+                login(); // login to Facebook
+            }
+        
+        });
+        }
     
         // Called when a photo is successfully retrieved
         //

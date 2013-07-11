@@ -96,9 +96,24 @@
         function getLoginStatus() {
             FB.getLoginStatus(function(response) {
                 if (response.status == 'connected') {
-                    alert('logged in ' + response.name + ' ' + response.email + ' ' + response.picture);
+                    alert('logged in');
                 } else {
                     alert('not logged in');
+                }
+            });
+        }
+        function getMeDatas(){
+            FB.api('/me', {
+                fields: 'id, name, email, picture'
+            },function(response) {
+                if (response.error) { 
+                   alert('get user datas failed ' + JSON.stringify(response.error));
+                }else{
+                    user = response;
+                    alert('FB id, ' + user.id);
+                    alert('FB name, ' + user.name);
+                    alert('FB email, ' + user.email);
+                    alert('FB email, ' + user.picture);
                 }
             });
         }

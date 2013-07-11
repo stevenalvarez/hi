@@ -30,9 +30,7 @@
         function onDeviceReady() {
             pictureSource=navigator.camera.PictureSourceType;
             destinationType=navigator.camera.DestinationType;
-			
-            //Inicializamos el api de facebook
-            try {
+			try {
 				alert('Device is ready!	Make sure you set your app_id below this alert.');
 				FB.init({
 					appId : "582928678420559",
@@ -52,7 +50,7 @@
 				if (response.error) {
 					alert(JSON.stringify(response.error));
 				} else {
-					var data = document.getElementById('data2');
+					var data = document.getElementById('data');
 					fdata = response.data;
 					console.log("fdata: " + fdata);
 					response.data.forEach(function(item) {
@@ -192,9 +190,8 @@
       </head>
       <body>
         <div id="data">Hello Facebooktesters, loading ...</div><br>
-        <div>
-            <a data-role="button" data-theme="b" data-transition="slide" href="login_fb.html">Page Login Facebook</a> <br>
-        </div>          
+    	<button onclick="login()">Login</button><br>
+    	<button onclick="me()">Me</button><br>
         <button onclick="capturePhoto();">Capture Photo</button> <br>
         <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
         <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>

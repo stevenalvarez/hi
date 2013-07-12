@@ -113,10 +113,21 @@
                     alert('FB id, ' + user.id);
                     alert('FB name, ' + user.name);
                     alert('FB email, ' + user.email);
-                    alert('FB email, ' + user.picture.data.url);
+                    alert('FB picture default, ' + user.picture.data.url);
                 }
             });
+            
+            //Obtenemos la imagen con width=960
+            FB.api("/me/picture?width=960",  function(response) {
+                if (response.error) { 
+                   alert('get picture failed ' + JSON.stringify(response.error));
+                }else{
+                    picture = response;
+                    alert('FB picture width=960, ' + picture.data.url);
+                }
+            });             
         }
+        
 		function facebookWallPost() {
 		    console.log('Debug 1');
 			var params = {

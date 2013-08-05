@@ -221,12 +221,12 @@
         //
         function capturePhotoEdit(element_preview) {
           // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
-          navigator.camera.getPicture(function(imageData){
+          navigator.camera.getPicture(function(imageURI){
             
-            alert(imageData);
+            alert(imageURI);
             var smallImage = document.getElementById(element_preview);
             smallImage.style.display = 'block';
-            smallImage.src = "data:image/jpeg;base64," + imageData;
+            smallImage.src = imageURI;
                         
           }, onFail, 
           { 

@@ -221,7 +221,19 @@
         //
         function capturePhotoEdit() {
           // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
-          navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+          navigator.camera.getPicture(function(){
+            alert("hjadsf");
+              var smallImage = document.getElementById('smallImage');
+        
+              // Unhide image elements
+              //
+              smallImage.style.display = 'block';
+        
+              // Show the captured photo
+              // The inline CSS rules are used to resize the image
+              //
+              smallImage.src = "data:image/jpeg;base64," + imageData;            
+          }, onFail, { quality: 20, allowEdit: true,
             destinationType: destinationType.DATA_URL });
         }
     

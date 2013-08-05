@@ -221,7 +221,7 @@
         //
         function capturePhotoEdit() {
           // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
-          navigator.camera.getPicture(function(){
+          navigator.camera.getPicture(function(imageData){
             alert("hjadsf");
               var smallImage = document.getElementById('smallImage');
         

@@ -222,19 +222,16 @@
         function capturePhotoEdit(element_preview) {
           // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
           navigator.camera.getPicture(function(imageData){
-            alert(element_preview);
-              var smallImage = document.getElementById(element_preview);
-        
-              // Unhide image elements
-              //
-              smallImage.style.display = 'block';
-        
-              // Show the captured photo
-              // The inline CSS rules are used to resize the image
-              //
-              smallImage.src = "data:image/jpeg;base64," + imageData;            
-          }, onFail, { quality: 50, allowEdit: true,
-            destinationType: destinationType.DATA_URL });
+            
+            var smallImage = document.getElementById(element_preview);
+            smallImage.style.display = 'block';
+            smallImage.src = "data:image/jpeg;base64," + imageData;
+                        
+          }, onFail, 
+          { 
+            quality: 50, allowEdit: true,
+            destinationType: destinationType.FILE_URI 
+          });
         }
     
         // A button will call this function

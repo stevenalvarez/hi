@@ -53,7 +53,7 @@
     <gap:splash src="splash/ios/Default-Portrait_at_2x.png" gap:platform="ios" width="1536" height="2008" />
     
     <!-- setting facebook -->
-    <gap:plugin name="FacebookConnect">
+    <gap:plugin name="com.phonegap.plugins.facebookconnect">
         <param name="APP_ID" value="582928678420559" />
         <param name="APP_NAME" value="pruebaConexFv" />
     </gap:plugin>

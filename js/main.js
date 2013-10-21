@@ -36,8 +36,9 @@ $('#geolocalizacion').live('pageshow', function(event, ui) {
     navigator.geolocation.getCurrentPosition(
     function(position){
         var coords = position.coords;
-        var src = "http://maps.google.com/maps/api/staticmap?center="+ coords.latitude+","+coords.longitude + "&zoom=12&size=320x480&maptype=roadmap&key=MyGoogleMapsAPIKey&sensor=true";
-        document.getElementById('map').serAttribute('src',src);
+        var src = "http://maps.google.com/maps/api/staticmap?center="+ coords.latitude+","+coords.longitude + "&zoom=15&size=320x480&maptype=roadmap&key=AIzaSyBvLnXtnEnR1tea2mEXAYGhOXUgFEfm_Ig&sensor=true";
+        console.log(src);
+        document.getElementById('map').setAttribute('src',src);
     }, function(error){
         alert('código: '  + error.code    + '\n' +
               'mensaje: ' + error.message + '\n');

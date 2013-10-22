@@ -47,6 +47,5 @@ $('#geolocalizacion').live('pageshow', function(event, ui) {
 });
 
 $('#geolocalizacion3').live('pageshow', function(event, ui) {
-    alert("1");
     initializeGeolocalizacion();
 });

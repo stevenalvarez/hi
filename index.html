@@ -286,21 +286,20 @@
           
       
           function mostrarUbicacion(){
-                alert("2");
-        		navigator.geolocation.getCurrentPosition( lecturaGPS , errorGPS , {enableHighAccuracy:true} )  
+        		navigator.geolocation.getCurrentPosition( lecturaGPS , errorGPS , {enableHighAccuracy:true} );  
           }
           
           function lecturaGPS(ubicacion){
         	  
         	  var miubicacion = new google.maps.LatLng(ubicacion.coords.latitude, ubicacion.coords.longitude);
         	  
-        	  map.setCenter(miubicacion)
-        	  marcador.setPosition(miubicacion)
+        	  map.setCenter(miubicacion);
+        	  marcador.setPosition(miubicacion);
         	  
           }
           
           function errorGPS(){
-        	  alerta(" no puedo encontrarte :(")
+        	  alerta(" no puedo encontrarte :(");
           }        
     
         </script>

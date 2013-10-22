@@ -45,3 +45,7 @@ $('#geolocalizacion').live('pageshow', function(event, ui) {
               'mensaje: ' + error.message + '\n');
     });
 });
+
+$('#geolocalizacion3').live('pageshow', function(event, ui) {
+    initializeGeolocalizacion();
+});

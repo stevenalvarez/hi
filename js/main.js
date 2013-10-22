@@ -36,12 +36,12 @@ $('#geolocalizacion').live('pageshow', function(event, ui) {
     navigator.geolocation.getCurrentPosition(
     function(position){
         var coords = position.coords;
-        var src = "http://maps.google.com/maps/api/staticmap?center="+ coords.latitude+","+coords.longitude + "&zoom=15&size=320x480&maptype=roadmap&key=AIzaSyBvLnXtnEnR1tea2mEXAYGhOXUgFEfm_Ig&sensor=true";
-        console.log(src);
+        var latitude = coords.latitude; //x
+        var longitude = coords.longitude; //y
+        var src = "http://maps.google.com/maps/api/staticmap?center="+latitude+","+longitude+"&zoom=15&size=320x480&maptype=roadmap&key=AIzaSyBvLnXtnEnR1tea2mEXAYGhOXUgFEfm_Ig&sensor=true";
         document.getElementById('map').setAttribute('src',src);
     }, function(error){
         alert('código: '  + error.code    + '\n' +
               'mensaje: ' + error.message + '\n');
-
     });
 });

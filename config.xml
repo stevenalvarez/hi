@@ -63,6 +63,12 @@
     <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
 
     <access origin="*" browserOnly="true"/>
+    
+    <!-- debug -->
+    <feature name="debug-server" required="true">
+      <param name="domain" value="http://debug.build.phonegap.com"/>
+      <param name="key" value="helloword"/>
+    </feature>
 	
 	<feature name="http://api.phonegap.com/1.0/battery"/>
     <feature name="http://api.phonegap.com/1.0/camera"/>

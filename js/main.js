@@ -49,3 +49,21 @@ $('#geolocalizacion').live('pageshow', function(event, ui) {
 $('#geolocalizacion3').live('pageshow', function(event, ui) {
     initializeGeolocalizacion();
 });
+
+$('#carrousel_slider').live('pageshow', function(event, ui) {
+    $("#owl-demo").owlCarousel({
+        pagination : false,
+        items : 4, //4 items above 1000px browser width
+        itemsMobile : [479,4], // itemsMobile disabled - inherit from itemsTablet option
+        responsive: false,
+    });
+});
+$( window ).on( "orientationchange", function( event ) {
+    if(event.orientation == "landscape" && $.mobile.activePage.attr('id') == "carrousel_slider"){
+        var owl = $(".owl-carousel").data('owlCarousel');
+        owl.reinit({
+            items : 6,
+            itemsMobile : [479,6]
+        });
+    } 
+});

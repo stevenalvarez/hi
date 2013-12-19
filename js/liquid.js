@@ -71,7 +71,7 @@
 				client_secret: "7oXIiclrkdxNT-HkSnmlmwUM", 		
 				
 				// or urn:ietf:wg:oauth:2.0:oob
-				redirect_uri: "http://localhost", 				 
+				redirect_uri: "http://www.queplanmadrid.es/", 				 
 
 				// The URI registered with the application
 				redirect_url_token: "", 						

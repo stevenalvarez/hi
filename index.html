@@ -34,8 +34,15 @@
         <script src="cordova.js"></script>
         <script src="cdv-plugin-fb-connect.js"></script>
         <script src="facebook-js-sdk.js"></script>
+        <script src="childbrowser.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvLnXtnEnR1tea2mEXAYGhOXUgFEfm_Ig&sensor=true"></script>
         <script src="js/main.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/liquid.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/helper/liquid.helper.oauth.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/model/liquid.model.tasks.js"></script>
+        
+		<!-- refer to GAPI directly -->
+        <script type="text/javascript" charset="utf-8" src="https://apis.google.com/js/client.js"></script>
         <script type="text/javascript">
         var pictureSource;   // picture source
         var destinationType; // sets the format of returned value
@@ -318,6 +325,9 @@
         </script>
       </head>
       <body>
+      <div data-role="page" id="page-unauthorized">
+      
+        <div id="content" data-role="content">
         <div id="data">Hello Facebooktesters, loading ...</div><br>
         <div>
             <a data-role="button" data-theme="b" data-transition="slide" href="login_fb.html">Page Login Facebook</a> <br>
@@ -330,13 +340,23 @@
         </div>
         <div>
             <a data-role="button" data-theme="e" data-transition="slide" href="carrousel_slider.html">Page Carrousel Slider</a> <br>
-        </div>        
+        </div>
+        <div id="access-code" data-authcode="">
+           <a href="#" id="auth-app" data-role="button" data-transition="none" data-theme="e" data-icon="check" data-iconpos="right"> 
+               Authorize &amp; GO! 
+           </a>
+        </div>
         <button onclick="capturePhoto();">Capture Photo</button> <br>
         <button onclick="capturePhotoEdit('smallImage');">Capture Editable Photo</button> <br>
         <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
         <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
         <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
         <img style="display:none;" id="largeImage" src="" />
+        </div><!-- /content -->
+      </div><!-- /page -->
+        
+        <script type="text/javascript" src="js/gtaskdemo.main.js" charset="utf-8"></script>        
+        
       </body>
 
     

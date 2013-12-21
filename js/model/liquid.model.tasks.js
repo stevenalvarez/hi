@@ -85,6 +85,16 @@
 				gapi.auth.setToken({
 					access_token: tokenObj.access_token
 				});
+                
+              var request = gapi.client.plus.people.get( {'userId' : 'me'} );
+              alert("entra");
+              request.execute( function(profile) {
+            	  var email = profile['emails'].filter(function(v) {
+            		return v.type === 'account'; // Filter out the primary email
+            	  })[0].value; // get the email from the filtered results, should always be defined.
+                  alert(email);
+              });
+              alert("termina");
 				
 				$this.loadGapi(function() {
 					var request = gapi.client.tasks.tasks.list({

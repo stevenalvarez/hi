@@ -48,31 +48,26 @@ function startPageTaskList() {
 
 
 function authorizeWindowChange(uriLocation) {
-    alert("Location Changed: " + uriLocation);
     //console.log("Location Changed: " + uriLocation); 
 	var oAuth = liquid.helper.oauth;
 	
 	// oAuth process is successful!	
     if (oAuth.requestStatus == oAuth.status.SUCCESS) {
-        alert("SUCCESS");
         var authCode = oAuth.authCode;
 
         // have the authCode, now save the refreshToken and start Page TaskList
         oAuth.saveRefreshToken({ 
         	  	auth_code: oAuth.authCode
         	  }, function() {
-        	      alert("JUAAAJA");
         		  startPageTaskList();
         	  });
         
     } 
     else if (oAuth.requestStatus == oAuth.status.ERROR) 
     {
-        alert("ERROR");
     	console.log("ERROR - status received = oAuth.status.ERROR");
     } 
     else {
-        alert("TODO");
         // do nothing, since user can be visiting different urls
     }
 }

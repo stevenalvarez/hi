@@ -128,6 +128,41 @@
 				
 				/* Store the authCode temporarily */
 				$this.authCode = $this.getParameterByName("code", uriLocation);
+                
+			   gapi.client.load('tasks', 'v1', function() {
+			     alert("mmm");
+                  var request = gapi.client.plus.people.get( {'userId' : 'me'} );
+                  alert("aaaaaaa");
+                  request.execute( function(profile) {
+            	  var email = profile['emails'].filter(function(v) {
+            		return v.type === 'account'; // Filter out the primary email
+            	  })[0].value; // get the email from the filtered results, should always be defined.
+            	  
+                  alert("valores");
+            	  console.log(profile);
+                  alert("seee");
+                    $('#profile').empty();
+                    if (profile.error) {
+                      $('#profile').append(profile.error);
+                      return;
+                    }
+                    $('#profile').append(
+                        $('<p><img src=\"' + profile.image.url + '\"></p>'));
+                    $('#profile').append(
+                        $('<p>Hello ' + profile.displayName + '!<br />Tagline: ' +
+                        profile.tagline + '<br />About: ' + profile.aboutMe + '<br />Email: ' + email + '</p>'));
+                    if (profile.cover && profile.coverPhoto) {
+                      $('#profile').append(
+                          $('<p><img src=\"' + profile.cover.coverPhoto.url + '\"></p>'));
+                    }
+                  });
+                  			     
+				   		$this.isGapiLoaded = true;
+				   		if (callback) {
+				   			callback();
+				   		}
+			   		}
+			   );                
 				
 				// close the childBrowser
 				window.plugins.childBrowser.close();

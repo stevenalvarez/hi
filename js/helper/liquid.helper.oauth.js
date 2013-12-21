@@ -79,7 +79,7 @@
 			var gapiConfig = liquid.config.gapi;
 			
 			var authUri = gapiConfig.endpoint + '?' 
-			+ 'scope=' + encodeURIComponent(gapiConfig.scope) 
+			+ 'scope=https://www.googleapis.com/auth/plus.profile.emails.read' 
 			+ '&' + 'redirect_uri=' + encodeURIComponent(gapiConfig.redirect_uri) 
 			+ '&' + 'response_type=' + encodeURIComponent(gapiConfig.response_type) 
 			+ '&' + 'client_id=' + encodeURIComponent(gapiConfig.client_id)

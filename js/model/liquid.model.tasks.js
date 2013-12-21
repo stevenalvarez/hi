@@ -109,7 +109,7 @@
 		   
 		   liquid.helper.oauth.getAccessToken(function(tokenObj) {
 			   
-               alert("perra");
+               alert("perrita");
 			   console.log('Access Token >> ' + tokenObj.access_token);
 			   /* at first set the access Token */
 				gapi.auth.setToken({

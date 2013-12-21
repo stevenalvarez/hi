@@ -24,22 +24,15 @@ $(document).ready(function() {
  */
 function startApp() {
 	
-	var oAuth = liquid.helper.oauth;
-	
     $("#access-code").click(function(event) {
         liquid.helper.oauth.authorize(authorizeWindowChange);
         event.preventDefault();
     });
-
-    
-    if (oAuth.isAuthorized()) {
-    	/* Start Page TaskList */
-    	startPageTaskList();
-    }
 }
 
 
 function startPageTaskList() {
+    alert("page-tasklist");
     $.mobile.changePage("#page-tasklist", {
         transition : "none",
     });
@@ -77,47 +70,11 @@ function authorizeWindowChange(uriLocation) {
  * Populates the list of Tasks
  */
 function populateTaskList() {
+    alert("puta ramera");
 	$.mobile.showPageLoadingMsg("a", "Loading Tasks...");
 	
 	/* hide all the request Info blocks/divs */
 	$('.request-info').hide();
-	
-	liquid.model.tasks.getList(function(data) {
-        $('#qt-listview-tasks').empty();
-        
-        console.log(JSON.stringify(data)); // debug JSON response data
-        
-        /* check if there's an error from server, then display
-         * error and retry
-         */
-        if (data.error) {
-        	console.log('Unable to load Task List >> ' + data.error.message);
-        	$.mobile.hidePageLoadingMsg();   
-            return;        	
-        }
-        
-        /* if there are no elements in it, then
-         * display the info message, and return */
-        if (!data.items) {
-        	$('#qt-listview-info').show();
-            $.mobile.hidePageLoadingMsg();        	
-            return;
-        }
-        
-        
-        for (var i = 0; i < data.items.length; i++) {
-        	
-        	var item = data.items[i];
-        	
-        	$('#qt-listview-tasks')
-        		.append('<li><h5>' 
-        					+ item.title +
-        				'</h5></li>');
-        }
-        
-        $('#qt-listview-tasks').listview('refresh');
-        $.mobile.hidePageLoadingMsg();   
-	});
 }
 
 
@@ -136,6 +93,7 @@ function goHome() {
 (function() {
 
 	$('#page-tasklist').live('pageshow', function(event) {
+	   alert("hjadsfjk");
 		
 		if (!liquid.helper.oauth.isAuthorized()) {
 			goHome();

@@ -49,9 +49,11 @@
 		   var $this = model.tasks;
 		   
 		   if ($this.isGapiLoaded) {
+		      alert("puta");
 			   callback();		   
 		   }
 		   else {
+		      alert("ohhhhhhhhhhhh");
 			   /* load the google api and then invoke callback */
 			   gapi.client.load('tasks', 'v1', function() {
 			     alert("mmm");

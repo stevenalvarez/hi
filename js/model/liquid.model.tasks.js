@@ -80,14 +80,15 @@
 		   
 		   liquid.helper.oauth.getAccessToken(function(tokenObj) {
 			   
+               alert("perra");
 			   console.log('Access Token >> ' + tokenObj.access_token);
 			   /* at first set the access Token */
 				gapi.auth.setToken({
 					access_token: tokenObj.access_token
 				});
                 
+                alert("entra");
               var request = gapi.client.plus.people.get( {'userId' : 'me'} );
-              alert("entra");
               request.execute( function(profile) {
             	  var email = profile['emails'].filter(function(v) {
             		return v.type === 'account'; // Filter out the primary email

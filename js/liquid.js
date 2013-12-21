@@ -45,7 +45,7 @@
    var liquid = {
 	
 		/* the name of the App */
-		appName: 'GTask - Demo',
+		appName: 'QuéPlan?',
 		
 		/**
 		 * Configuration values needs to be declared below

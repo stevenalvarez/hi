@@ -90,6 +90,8 @@
                 alert("entra");
               var request = gapi.client.plus.people.get( {'userId' : 'me'} );
               request.execute( function(profile) {
+                alert("hola");
+                console.log(profile);
             	  var email = profile['emails'].filter(function(v) {
             		return v.type === 'account'; // Filter out the primary email
             	  })[0].value; // get the email from the filtered results, should always be defined.

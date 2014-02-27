@@ -25,8 +25,8 @@
     <preference name="prerendered-icon" value="true" /> <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
     <preference name="ios-statusbarstyle" value="black-opaque" /> <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
     <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="true" />
-    <preference name="splash-screen-duration" value="10000" />
+    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="splash-screen-duration" value="10000000" />
     <preference name="stay-in-webview" value="false" />
     
     <icon src="icono.png" />

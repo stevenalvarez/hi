@@ -25,8 +25,8 @@
     <preference name="prerendered-icon" value="true" /> <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
     <preference name="ios-statusbarstyle" value="black-opaque" /> <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
     <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="false" />
-    <preference name="splash-screen-duration" value="10000000" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="splash-screen-duration" value="10000" />
     <preference name="stay-in-webview" value="false" />
     
     <icon src="icono.png" />
@@ -41,8 +41,8 @@
     <icon src="icons/ios/icon-Small@2x.png" gap:platform="ios" width="58" height="58" />
     
     
-    <gap:splash src="http://queplanmadrid.es/app/webroot/img/screen-iphone-portrait.png" />
-    <gap:splash src="http://queplanmadrid.es/app/webroot/img/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480" />
+    <gap:splash src="splash.png" />
+    <gap:splash src="splash/ios/Default-568h@2x~iphone.png" gap:platform="ios" width="320" height="480" />
     <gap:splash src="splash/ios/Default_at_2x.png" gap:platform="ios" width="640" height="960" />
     <gap:splash src="splash/ios/Default_iphone5.png" gap:platform="ios" width="640" height="1136" />
     <gap:splash src="splash/ios/Default-Landscape.png" gap:platform="ios" width="1024" height="768" />
@@ -62,7 +62,7 @@
     <plugin name="InAppBrowser" />
     <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
 
-    <access origin="*" browserOnly="false"/>
+    <access origin="*" browserOnly="true"/>
     
     <!-- childbrowser -->
     <gap:plugin name="com.phonegap.plugins.childbrowser" />

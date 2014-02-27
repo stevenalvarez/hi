@@ -62,7 +62,7 @@
     <plugin name="InAppBrowser" />
     <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
 
-    <access origin="*" browserOnly="true"/>
+    <access origin="*" browserOnly="false"/>
     
     <!-- childbrowser -->
     <gap:plugin name="com.phonegap.plugins.childbrowser" />
